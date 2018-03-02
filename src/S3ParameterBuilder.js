@@ -32,7 +32,7 @@ var createParams = {
             Bucket:bucketName,
             Key: key,
             Body: body,//new Buffer(body),
-            ContentType: mimeType
+            ContentType: 'application/json'
         };
     },
     putBucketWebsite:function(bucketName,index,error) {
