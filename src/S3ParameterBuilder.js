@@ -1,5 +1,11 @@
 var mime = require('mime');
 
+function removeExtension(filename){
+    var lastDotPosition = filename.lastIndexOf(".");
+    if (lastDotPosition === -1) return filename;
+    else return filename.substr(0, lastDotPosition);
+}
+
 var createParams = {
     createBucket:function(bucketName){
         return {
@@ -30,9 +36,9 @@ var createParams = {
         // console.log(body);
         return {
             Bucket:bucketName,
-            Key: key,
+            Key: removeExtension(key),
             Body: body,//new Buffer(body),
-            ContentType: 'application/json'
+            ContentType: mimeType
         };
     },
     putBucketWebsite:function(bucketName,index,error) {
